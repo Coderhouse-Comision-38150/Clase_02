@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>desafio-clase1-consigna 1</title>
+</head>
+
+<body>
+    <script>
+        function Usuario (nombre, apellido, libros, mascotas) {
+            this.nombre = nombre
+            this.apellido = apellido
+            this.libros = libros
+            this.mascotas = mascotas
+        }
+
+        Usuario.prototype.addMascota = function(mascota) {
+            this.mascotas.push(mascota)
+        }
+
+        Usuario.prototype.getMascotas = function() {
+            return this.mascotas.length
+        }
+
+        Usuario.prototype.addBook = function(book, autor) {
+            this.libros.push({ nombre: book, autor: autor })
+        }
+
+        Usuario.prototype.getBooks = function() {
+            let arrayNombres = []
+            for (let i = 0; i < this.libros.length; i++) {
+                arrayNombres.push(this.libros[i].nombre)
+            }
+            return arrayNombres
+        }
+
+        Usuario.prototype.getFullName = function() {
+            return `${this.nombre} ${this.apellido}`
+        }
+
+        let nombre = 'Juan', apellido = 'Perez', libros = [], mascotas = []
+        let usuario = new Usuario(nombre, apellido, libros, mascotas);
+        usuario.addMascota('Perro')
+        usuario.addMascota('Gato')
+        usuario.addBook('Rambo','Stalonne')
+        usuario.addBook('IT','Stephen King')
+
+        console.log(usuario.getMascotas())
+        console.log(usuario.getBooks())
+        console.log(usuario.getFullName())
+
+    </script>
+</body>
+
+</html>
